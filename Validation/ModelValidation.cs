@@ -1,5 +1,6 @@
 using dotnet_api_test.Exceptions.ExceptionResponses;
 using dotnet_api_test.Models.Dtos;
+using System.ComponentModel.DataAnnotations;
 
 namespace dotnet_api_test.Validation
 {

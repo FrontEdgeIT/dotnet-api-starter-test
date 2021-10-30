@@ -1,26 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "/Users/danielpersson/Insync/persson.daniel.1990@gmail.com/Google Drive/FrontEdgeIT/educationprogram/dotnet-api-test/dotnet-api-test.csproj": {}
+    "D:\\max\\Code\\FrontEdgeIT Praktik Kodtest\\dotnet-api-starter-test\\dotnet-api-test.csproj": {}
   },
   "projects": {
-    "/Users/danielpersson/Insync/persson.daniel.1990@gmail.com/Google Drive/FrontEdgeIT/educationprogram/dotnet-api-test/dotnet-api-test.csproj": {
+    "D:\\max\\Code\\FrontEdgeIT Praktik Kodtest\\dotnet-api-starter-test\\dotnet-api-test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/danielpersson/Insync/persson.daniel.1990@gmail.com/Google Drive/FrontEdgeIT/educationprogram/dotnet-api-test/dotnet-api-test.csproj",
+        "projectUniqueName": "D:\\max\\Code\\FrontEdgeIT Praktik Kodtest\\dotnet-api-starter-test\\dotnet-api-test.csproj",
         "projectName": "dotnet-api-test",
-        "projectPath": "/Users/danielpersson/Insync/persson.daniel.1990@gmail.com/Google Drive/FrontEdgeIT/educationprogram/dotnet-api-test/dotnet-api-test.csproj",
-        "packagesPath": "/Users/danielpersson/.nuget/packages/",
-        "outputPath": "/Users/danielpersson/Insync/persson.daniel.1990@gmail.com/Google Drive/FrontEdgeIT/educationprogram/dotnet-api-test/obj/",
+        "projectPath": "D:\\max\\Code\\FrontEdgeIT Praktik Kodtest\\dotnet-api-starter-test\\dotnet-api-test.csproj",
+        "packagesPath": "C:\\Users\\max\\.nuget\\packages\\",
+        "outputPath": "D:\\max\\Code\\FrontEdgeIT Praktik Kodtest\\dotnet-api-starter-test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/danielpersson/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\max\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/discord-net/api/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -73,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/Users/danielpersson/.dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.2.21505.57\\RuntimeIdentifierGraph.json"
         }
       }
     }

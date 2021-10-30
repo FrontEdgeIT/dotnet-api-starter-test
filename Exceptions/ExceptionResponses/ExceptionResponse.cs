@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace dotnet_api_test.Exceptions.ExceptionResponses
 {
     public class ExceptionResponse

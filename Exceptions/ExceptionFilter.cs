@@ -1,5 +1,6 @@
 using dotnet_api_test.Exceptions.ExceptionHandlers;
 using dotnet_api_test.Exceptions.ExceptionResponses;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace dotnet_api_test.Exceptions
 {

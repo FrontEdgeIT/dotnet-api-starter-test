@@ -30,3 +30,37 @@
 /Users/danielpersson/Insync/persson.daniel.1990@gmail.com/Google Drive/FrontEdgeIT/educationprogram/dotnet-api-test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
 /Users/danielpersson/Insync/persson.daniel.1990@gmail.com/Google Drive/FrontEdgeIT/educationprogram/dotnet-api-test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
 /Users/danielpersson/Insync/persson.daniel.1990@gmail.com/Google Drive/FrontEdgeIT/educationprogram/dotnet-api-test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.GlobalUsings.g.cs
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.csproj.AssemblyReference.cache
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.GeneratedMSBuildEditorConfig.editorconfig
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.AssemblyInfoInputs.cache
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.AssemblyInfo.cs
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.csproj.CoreCompileInputs.cache
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.MvcApplicationPartsAssemblyInfo.cs
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.MvcApplicationPartsAssemblyInfo.cache
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.dll
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\ref\dotnet-api-test.dll
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.pdb
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\appsettings.Development.json
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\appsettings.json
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\dotnet-api-test.staticwebassets.runtime.json
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\dotnet-api-test.exe
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\dotnet-api-test.deps.json
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\dotnet-api-test.runtimeconfig.json
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\dotnet-api-test.dll
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\ref\dotnet-api-test.dll
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\dotnet-api-test.pdb
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\AutoMapper.dll
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\staticwebassets.build.json
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\staticwebassets.development.json
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\scopedcss\bundle\dotnet-api-test.styles.css
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.genruntimeconfig.cache
+D:\max\Code\FrontEdgeIT Praktik Kodtest\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.csproj.CopyComplete
