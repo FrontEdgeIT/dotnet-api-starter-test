@@ -1,5 +1,3 @@
-using dotnet_api_test.Exceptions;
-using dotnet_api_test.Exceptions.ExceptionHandlers;
 using dotnet_api_test.Exceptions.ExceptionResponses;
 using dotnet_api_test.Persistence.Repositories.Interfaces;
 
