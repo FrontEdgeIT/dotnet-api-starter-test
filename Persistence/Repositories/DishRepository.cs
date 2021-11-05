@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using dotnet_api_test.Persistence.Repositories.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace dotnet_api_test.Persistence.Repositories
 {
@@ -32,7 +33,9 @@ namespace dotnet_api_test.Persistence.Repositories
 
         public Dish GetDishById(int Id)
         {
-            throw new System.NotImplementedException();
+            var dishes = _context.Dishes;
+            var dish = _context.Find<Dish>(Id);
+            return dish;
         }
 
         public void DeleteDishById(int Id)

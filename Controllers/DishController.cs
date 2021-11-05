@@ -1,5 +1,7 @@
 using System.Linq;
 using AutoMapper;
+using dotnet_api_test.Exceptions.ExceptionHandlers;
+using dotnet_api_test.Exceptions.ExceptionResponses;
 using dotnet_api_test.Models.Dtos;
 using dotnet_api_test.Persistence.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -41,7 +43,13 @@ namespace dotnet_api_test.Controllers
         [Route("{id}")]
         public ActionResult<ReadDishDto> GetDishById(int id)
         {
-            return Ok();
+            Dish dish = _dishRepository.GetDishById(id);
+            var response =
+                HttpResponseHandler.Respond(
+                    new NotFoundRequestExceptionResponse($"The dish with id: {id} was not found.")
+                    );
+            if (dish == null) return response.CreateObjectResult();
+            return new ReadDishDto {Id = dish.Id, Cost = dish.Cost, Name = dish.Name, MadeBy = dish.MadeBy};
         }
 
         [HttpPost]
