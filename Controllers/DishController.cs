@@ -1,3 +1,4 @@
+using System.Linq;
 using AutoMapper;
 using dotnet_api_test.Models.Dtos;
 using dotnet_api_test.Persistence.Repositories.Interfaces;
@@ -25,7 +26,15 @@ namespace dotnet_api_test.Controllers
         [Route("")]
         public ActionResult<DishesAndAveragePriceDto> GetDishesAndAverageDishPrice()
         {
-            return Ok();
+            var allDishes = _dishRepository.GetAllDishes();
+            var dtoDishes = allDishes.Select(dish =>
+                new ReadDishDto {Cost = dish.Cost, Id = dish.Id, MadeBy = dish.MadeBy, Name = dish.Name}).ToList();
+            var result = new DishesAndAveragePriceDto
+            {
+                Dishes = dtoDishes,
+                AveragePrice = _dishRepository.GetAverageDishPrice()
+            };
+            return result;
         }
 
         [HttpGet]
