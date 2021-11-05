@@ -25,7 +25,9 @@ namespace dotnet_api_test.Persistence.Repositories
 
         public dynamic? GetAverageDishPrice()
         {
-            throw new System.NotImplementedException();
+            dynamic average = 0.0;
+            if (_context.Dishes.Local.Count > 0) average = _context.Dishes.Average( (d) => d.Cost);
+            return average;
         }
 
         public Dish GetDishById(int Id)
