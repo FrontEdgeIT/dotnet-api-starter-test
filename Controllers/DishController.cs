@@ -28,15 +28,12 @@ namespace dotnet_api_test.Controllers
         [Route("")]
         public ActionResult<DishesAndAveragePriceDto> GetDishesAndAverageDishPrice()
         {
-            var allDishes = _dishRepository.GetAllDishes();
-            var dtoDishes = allDishes.Select(dish =>
-                new ReadDishDto {Cost = dish.Cost, Id = dish.Id, MadeBy = dish.MadeBy, Name = dish.Name}).ToList();
-            var result = new DishesAndAveragePriceDto
-            {
-                Dishes = dtoDishes,
-                AveragePrice = _dishRepository.GetAverageDishPrice()
-            };
-            return result;
+            var allDishes = _dishRepository.GetAllDishes().ToList();
+            if (allDishes.Count == 0) return NoContent();
+            var dtoDishes = allDishes.Select(dish => _mapper.Map<ReadDishDto>(dish)).ToList();
+            return Ok(
+                new DishesAndAveragePriceDto {Dishes = dtoDishes, AveragePrice = _dishRepository.GetAverageDishPrice()}
+            );
         }
 
         [HttpGet]
