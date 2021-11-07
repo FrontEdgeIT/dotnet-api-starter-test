@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using dotnet_api_test.Exceptions.ExceptionResponses;
 using dotnet_api_test.Persistence.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace dotnet_api_test.Persistence.Repositories
 {
@@ -18,7 +21,18 @@ namespace dotnet_api_test.Persistence.Repositories
 
         void IDishRepository.SaveChanges()
         {
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException e)
+            {
+                Console.WriteLine(e);
+            }
+            catch (DBConcurrencyException e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         public IEnumerable<Dish> GetAllDishes()
@@ -28,9 +42,7 @@ namespace dotnet_api_test.Persistence.Repositories
 
         public dynamic? GetAverageDishPrice()
         {
-            dynamic average = 0.0;
-            if (_context.Dishes.Local.Count > 0) average = _context.Dishes.Average( (d) => d.Cost);
-            return average;
+            return _context.Dishes.Any() ? _context.Dishes.Average( (d) => d.Cost) : 0;
         }
 
         public Dish GetDishById(int Id)
