@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using dotnet_api_test.Exceptions.ExceptionResponses;
 using dotnet_api_test.Persistence.Repositories.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 
 namespace dotnet_api_test.Persistence.Repositories
 {
