@@ -98,7 +98,15 @@ namespace dotnet_api_test.Controllers
         [Route("{id}")]
         public ActionResult DeleteDishById(int id)
         {
-            return Ok();
+            try
+            {
+                _dishRepository.DeleteDishById(id);
+                return Ok();
+            }
+            catch (NotFoundRequestExceptionResponse e)
+            {
+                return NotFound(e.Message);
+            }
         }
     }
 }
