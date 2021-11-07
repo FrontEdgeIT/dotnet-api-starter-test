@@ -72,7 +72,26 @@ namespace dotnet_api_test.Controllers
         [Route("{id}")]
         public ActionResult<ReadDishDto> UpdateDishById(int id, UpdateDishDto updateDishDto)
         {
-            return Ok();
+            try
+            {
+                var currentDish = _dishRepository.GetDishById(id);
+                ModelValidation.ValidateUpdateDishDto(updateDishDto);
+                var newCost = (double) updateDishDto.Cost!;
+                ModelValidation
+                    .ValidateUpdateDishDtoCostIsLessThanPercentageCap(currentDish.Cost, newCost, 1.2);
+                currentDish.Cost = newCost;
+                currentDish.Name = updateDishDto.Name!;
+                currentDish.MadeBy = updateDishDto.MadeBy!;
+                return Ok(_dishRepository.UpdateDish(currentDish));
+            }
+            catch (NotFoundRequestExceptionResponse e)
+            {
+                return NotFound(e.Message);
+            }
+            catch (BadRequestExceptionResponse e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpDelete]
