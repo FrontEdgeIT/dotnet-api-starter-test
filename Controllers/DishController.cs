@@ -32,7 +32,7 @@ namespace dotnet_api_test.Controllers
             if (allDishes.Count == 0)
             {
                 _logger.LogInformation("Tried to get all dishes but none was found.");
-                return new DishesAndAveragePriceDto{};
+                return new DishesAndAveragePriceDto();
             }
             var dtoDishes = allDishes.Select(dish => _mapper.Map<ReadDishDto>(dish)).ToList();
             _logger.LogInformation("Returning all dishes.");
