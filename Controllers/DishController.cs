@@ -55,7 +55,17 @@ namespace dotnet_api_test.Controllers
         [Route("")]
         public ActionResult<ReadDishDto> CreateDish([FromBody] CreateDishDto createDishDto)
         {
-            return Ok();
+            try
+            {
+                ModelValidation.ValidateCreateDishDto(createDishDto);
+                ModelValidation.ValidateDishNameIsUnique(createDishDto.Name!, _dishRepository.GetAllDishes());
+                var dish = _dishRepository.CreateDish(_mapper.Map<Dish>(createDishDto));
+                return Ok(_mapper.Map<ReadDishDto>(dish));
+            }
+            catch (BadRequestExceptionResponse e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPut]
