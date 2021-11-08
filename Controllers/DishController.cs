@@ -68,7 +68,7 @@ namespace dotnet_api_test.Controllers
             }
             catch (BadRequestExceptionResponse e)
             {
-                _logger.LogInformation("{time}Failed to create a new Dish: {msg}", Now, e.Message);
+                _logger.LogInformation("{time} Failed to create a new Dish: {msg}", Now, e.Message);
                 return BadRequest(e.Message);
             }
         }
@@ -107,12 +107,12 @@ namespace dotnet_api_test.Controllers
             try
             {
                 _dishRepository.DeleteDishById(id);
-                _logger.LogInformation("{time}Deleted Dish with id:{id}.", Now, id);
+                _logger.LogInformation("{time} Deleted Dish with id:{id}.", Now, id);
                 return Ok();
             }
             catch (NotFoundRequestExceptionResponse e)
             {
-                _logger.LogInformation("{time}Failed to Delete a dish: {msg}", Now, e.Message);
+                _logger.LogInformation("{time} Failed to Delete a dish: {msg}", Now, e.Message);
                 return NotFound(e.Message);
             }
         }
