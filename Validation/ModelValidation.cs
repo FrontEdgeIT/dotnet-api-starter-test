@@ -28,7 +28,7 @@ namespace dotnet_api_test.Validation
             if (string.IsNullOrEmpty(value)) validationResults.Add(new ValidationResult($"{entityName} was empty."));
         }
 
-        public static void ValidateUpdateDishDtoCostIsLessThanPercentageCap(double currentCost, double updatedCost,
+        public static void IsDishCostLessThanPercentageMax(double currentCost, double updatedCost,
             double percentageIncreaseMax)
         {
             if (currentCost * percentageIncreaseMax < updatedCost)
