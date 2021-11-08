@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using dotnet_api_test.Exceptions.ExceptionResponses;
@@ -6,6 +7,7 @@ using dotnet_api_test.Persistence.Repositories.Interfaces;
 using dotnet_api_test.Validation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using static System.DateTime;
 
 namespace dotnet_api_test.Controllers
 {
@@ -28,16 +30,10 @@ namespace dotnet_api_test.Controllers
         [Route("")]
         public ActionResult<DishesAndAveragePriceDto> GetDishesAndAverageDishPrice()
         {
-            var allDishes = _dishRepository.GetAllDishes().ToList();
-            if (allDishes.Count == 0)
-            {
-                _logger.LogInformation("Tried to get all dishes but none was found.");
-                return new DishesAndAveragePriceDto();
-            }
-            var dtoDishes = allDishes.Select(dish => _mapper.Map<ReadDishDto>(dish)).ToList();
-            _logger.LogInformation("Returning all dishes.");
+            _logger.LogInformation("{time} Returning all dishes.", Now);
+            var dtoDishes = _mapper.Map<List<ReadDishDto>>(_dishRepository.GetAllDishes().ToList());
             return Ok(
-                 new DishesAndAveragePriceDto {Dishes = dtoDishes, AveragePrice = _dishRepository.GetAverageDishPrice()}
+                new DishesAndAveragePriceDto {Dishes = dtoDishes, AveragePrice = _dishRepository.GetAverageDishPrice()}
             );
         }
 
@@ -48,12 +44,12 @@ namespace dotnet_api_test.Controllers
             try
             {
                 Dish dish = _dishRepository.GetDishById(id);
-                _logger.LogInformation($"Returning a dish with id:{id}.");
+                _logger.LogInformation("{time} Returning a dish with id:{id}.", Now, id);
                 return Ok(_mapper.Map<ReadDishDto>(dish));
             }
             catch (NotFoundRequestExceptionResponse e)
             {
-                _logger.LogInformation($"Could not find a dish with id:{id}.");
+                _logger.LogInformation("{time} Could not find a dish with id:{id}.", Now, id);
                 return NotFound(e.Message);
             }
         }
@@ -67,12 +63,12 @@ namespace dotnet_api_test.Controllers
                 ModelValidation.ValidateCreateDishDto(createDishDto);
                 ModelValidation.ValidateDishNameIsUnique(createDishDto.Name!, _dishRepository.GetAllDishes());
                 var dish = _dishRepository.CreateDish(_mapper.Map<Dish>(createDishDto));
-                _logger.LogInformation($"Dish {dish.Name} created with id:{dish.Id}");
+                _logger.LogInformation("{time} Dish {Name} created with id:{Id}", Now, dish.Name, dish.Id);
                 return Ok(_mapper.Map<ReadDishDto>(dish));
             }
             catch (BadRequestExceptionResponse e)
             {
-                _logger.LogInformation($"Failed to create a new Dish: {e.Message}");
+                _logger.LogInformation("{time}Failed to create a new Dish: {msg}", Now, e.Message);
                 return BadRequest(e.Message);
             }
         }
@@ -86,22 +82,20 @@ namespace dotnet_api_test.Controllers
                 var currentDish = _dishRepository.GetDishById(id);
                 ModelValidation.ValidateUpdateDishDto(updateDishDto);
                 var newCost = (double) updateDishDto.Cost!;
-                ModelValidation
-                    .ValidateUpdateDishDtoCostIsLessThanPercentageCap(currentDish.Cost, newCost, 1.2);
-                currentDish.Cost = newCost;
-                currentDish.Name = updateDishDto.Name!;
-                currentDish.MadeBy = updateDishDto.MadeBy!;
-                _logger.LogInformation($"Updated Dish with id: {id}");
+                ModelValidation.IsDishCostLessThanPercentageMax(currentDish.Cost, newCost, 1.2);
+                _mapper.Map(updateDishDto, currentDish);
+                _logger.LogInformation("{time} Updated Dish with id: {id}", Now, id);
                 return Ok(_dishRepository.UpdateDish(currentDish));
             }
             catch (NotFoundRequestExceptionResponse e)
             {
-                _logger.LogInformation($"Failed to update a dish with id:{id}: {e.Message}");
+                _logger.LogInformation("{time} Failed to update a dish: {msg}", Now, e.Message);
                 return NotFound(e.Message);
             }
             catch (BadRequestExceptionResponse e)
             {
-                _logger.LogInformation($"Failed to update a dish with id:{id}: {e.Message}");
+                _logger.LogInformation("{time} Failed to update a dish with id:{id}: {msg}", Now, id,
+                    e.Message);
                 return BadRequest(e.Message);
             }
         }
@@ -113,12 +107,12 @@ namespace dotnet_api_test.Controllers
             try
             {
                 _dishRepository.DeleteDishById(id);
-                _logger.LogInformation($"Removed dish with id: {id}");
+                _logger.LogInformation("{time}Deleted Dish with id:{id}.", Now, id);
                 return Ok();
             }
             catch (NotFoundRequestExceptionResponse e)
             {
-                _logger.LogInformation($"Failed to remove a dish with id:{id}: {e.Message}");
+                _logger.LogInformation("{time}Failed to Delete a dish: {msg}", Now, e.Message);
                 return NotFound(e.Message);
             }
         }
