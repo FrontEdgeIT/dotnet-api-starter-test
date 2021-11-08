@@ -12,7 +12,7 @@ namespace dotnet_api_test.Mapping
             CreateMap<CreateDishDto, Dish>();
             CreateMap<ReadDishDto, Dish>();
             CreateMap<UpdateDishDto, Dish>();
-            CreateMap<List<Dish>, List<ReadDishDto>>();
+            CreateMap<List<ReadDishDto>, List<Dish>>();
         }
     }
 }

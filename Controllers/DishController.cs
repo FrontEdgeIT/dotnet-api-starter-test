@@ -31,7 +31,8 @@ namespace dotnet_api_test.Controllers
         public ActionResult<DishesAndAveragePriceDto> GetDishesAndAverageDishPrice()
         {
             _logger.LogInformation("{time} Returning all dishes.", Now);
-            var dtoDishes = _mapper.Map<List<ReadDishDto>>(_dishRepository.GetAllDishes().ToList());
+            List<ReadDishDto> dtoDishes = new ();
+            _mapper.Map(_dishRepository.GetAllDishes().ToList(),dtoDishes);
             return Ok(
                 new DishesAndAveragePriceDto {Dishes = dtoDishes, AveragePrice = _dishRepository.GetAverageDishPrice()}
             );
