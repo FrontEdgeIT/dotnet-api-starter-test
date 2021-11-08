@@ -1,8 +1,13 @@
+using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
+using dotnet_api_test.Exceptions.ExceptionResponses;
 using dotnet_api_test.Models.Dtos;
 using dotnet_api_test.Persistence.Repositories.Interfaces;
+using dotnet_api_test.Validation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using static System.DateTime;
 
 namespace dotnet_api_test.Controllers
 {
@@ -25,35 +30,92 @@ namespace dotnet_api_test.Controllers
         [Route("")]
         public ActionResult<DishesAndAveragePriceDto> GetDishesAndAverageDishPrice()
         {
-            return Ok();
+            _logger.LogInformation("{time} Returning all dishes.", Now);
+            List<ReadDishDto> dtoDishes = new ();
+            _mapper.Map(_dishRepository.GetAllDishes().ToList(),dtoDishes);
+            return Ok(
+                new DishesAndAveragePriceDto {Dishes = dtoDishes, AveragePrice = _dishRepository.GetAverageDishPrice()}
+            );
         }
 
         [HttpGet]
         [Route("{id}")]
         public ActionResult<ReadDishDto> GetDishById(int id)
         {
-            return Ok();
+            try
+            {
+                Dish dish = _dishRepository.GetDishById(id);
+                _logger.LogInformation("{time} Returning a dish with id:{id}.", Now, id);
+                return Ok(_mapper.Map<ReadDishDto>(dish));
+            }
+            catch (NotFoundRequestExceptionResponse e)
+            {
+                _logger.LogInformation("{time} Could not find a dish with id:{id}.", Now, id);
+                return NotFound(e.Message);
+            }
         }
 
         [HttpPost]
         [Route("")]
         public ActionResult<ReadDishDto> CreateDish([FromBody] CreateDishDto createDishDto)
         {
-            return Ok();
+            try
+            {
+                ModelValidation.ValidateCreateDishDto(createDishDto);
+                ModelValidation.ValidateDishNameIsUnique(createDishDto.Name!, _dishRepository.GetAllDishes());
+                var dish = _dishRepository.CreateDish(_mapper.Map<Dish>(createDishDto));
+                _logger.LogInformation("{time} Dish {Name} created with id:{Id}", Now, dish.Name, dish.Id);
+                return Ok(_mapper.Map<ReadDishDto>(dish));
+            }
+            catch (BadRequestExceptionResponse e)
+            {
+                _logger.LogInformation("{time} Failed to create a new Dish: {msg}", Now, e.Message);
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPut]
         [Route("{id}")]
         public ActionResult<ReadDishDto> UpdateDishById(int id, UpdateDishDto updateDishDto)
         {
-            return Ok();
+            try
+            {
+                var currentDish = _dishRepository.GetDishById(id);
+                ModelValidation.ValidateUpdateDishDto(updateDishDto);
+                var newCost = (double) updateDishDto.Cost!;
+                ModelValidation.IsDishCostLessThanPercentageMax(currentDish.Cost, newCost, 1.2);
+                _mapper.Map(updateDishDto, currentDish);
+                _logger.LogInformation("{time} Updated Dish with id: {id}", Now, id);
+                return Ok(_dishRepository.UpdateDish(currentDish));
+            }
+            catch (NotFoundRequestExceptionResponse e)
+            {
+                _logger.LogInformation("{time} Failed to update a dish: {msg}", Now, e.Message);
+                return NotFound(e.Message);
+            }
+            catch (BadRequestExceptionResponse e)
+            {
+                _logger.LogInformation("{time} Failed to update a dish with id:{id}: {msg}", Now, id,
+                    e.Message);
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpDelete]
         [Route("{id}")]
         public ActionResult DeleteDishById(int id)
         {
-            return Ok();
+            try
+            {
+                _dishRepository.DeleteDishById(id);
+                _logger.LogInformation("{time} Deleted Dish with id:{id}.", Now, id);
+                return Ok();
+            }
+            catch (NotFoundRequestExceptionResponse e)
+            {
+                _logger.LogInformation("{time} Failed to Delete a dish: {msg}", Now, e.Message);
+                return NotFound(e.Message);
+            }
         }
     }
 }

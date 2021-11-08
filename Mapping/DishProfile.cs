@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AutoMapper;
 using dotnet_api_test.Models.Dtos;
 
@@ -10,6 +11,8 @@ namespace dotnet_api_test.Mapping
             CreateMap<Dish, ReadDishDto>();
             CreateMap<CreateDishDto, Dish>();
             CreateMap<ReadDishDto, Dish>();
+            CreateMap<UpdateDishDto, Dish>();
+            CreateMap<List<ReadDishDto>, List<Dish>>();
         }
     }
 }
