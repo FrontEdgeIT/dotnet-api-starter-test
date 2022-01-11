@@ -30,3 +30,6 @@
 /Users/danielpersson/Insync/persson.daniel.1990@gmail.com/Google Drive/FrontEdgeIT/educationprogram/dotnet-api-test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
 /Users/danielpersson/Insync/persson.daniel.1990@gmail.com/Google Drive/FrontEdgeIT/educationprogram/dotnet-api-test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
 /Users/danielpersson/Insync/persson.daniel.1990@gmail.com/Google Drive/FrontEdgeIT/educationprogram/dotnet-api-test/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\Mousa\Source\Repos\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.dll
+C:\Users\Mousa\Source\Repos\dotnet-api-starter-test\obj\Debug\net6.0\ref\dotnet-api-test.dll
+C:\Users\Mousa\Source\Repos\dotnet-api-starter-test\obj\Debug\net6.0\dotnet-api-test.pdb
