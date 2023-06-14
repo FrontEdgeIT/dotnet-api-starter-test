@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using dotnet_api_test.Persistence.Repositories.Interfaces;
 
 namespace dotnet_api_test.Persistence.Repositories
@@ -14,37 +13,40 @@ namespace dotnet_api_test.Persistence.Repositories
 
         void IDishRepository.SaveChanges()
         {
-            throw new System.NotImplementedException();
+            _context.SaveChanges();
         }
 
         public IEnumerable<Dish> GetAllDishes()
         {
-            throw new System.NotImplementedException();
+            return _context.Dishes.ToList();
         }
 
         public dynamic? GetAverageDishPrice()
         {
-            throw new System.NotImplementedException();
+            return _context.Dishes.Average(d => d.Cost);
         }
 
         public Dish GetDishById(int Id)
         {
-            throw new System.NotImplementedException();
+            return _context.Find<Dish>(Id);
         }
 
         public void DeleteDishById(int Id)
         {
-            throw new System.NotImplementedException();
+            var dishToRemove = _context.Find<Dish>(Id);
+            _context.Dishes.Remove(dishToRemove);
         }
 
         public Dish CreateDish(Dish dish)
         {
-            throw new System.NotImplementedException();
+            _context.Add(dish);
+            return dish;
         }
 
         public Dish UpdateDish(Dish dish)
         {
-            throw new System.NotImplementedException();
+            _context.Update(dish);
+            return dish;
         }
     }
 }
